@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ActionFilters.ActionFilters;
 using ActionFilters.Entities;
 using ActionFilters.Extensions;
+using ActionFilters.JWTTokenAuthentication;
 using ActionFilters.TokenAuthentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,7 +40,11 @@ namespace ActionFilters
 
             services.AddScoped<ValidationEntitiyExistsAttribute<Movie>>();
 
+            //Simple TokenManager
             services.AddSingleton<ITokenManager, TokenManager>();
+
+            //JWT Token
+            services.AddTransient<IJWTTokenManager, JWTTokenManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

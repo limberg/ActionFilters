@@ -29,6 +29,7 @@ namespace ActionFilters.Controllers
 
         [HttpGet("{id}", Name = "MovieById")]
         [ServiceFilter(typeof(ValidationEntitiyExistsAttribute<Movie>))]
+        [JWTTokenAuthenticationFilter]
         public IActionResult Get(Guid id)
         {
             var dbMovie = HttpContext.Items["entity"];
